@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+      # - setup_remote_docker
+      - run:
+          name: Docker login
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS
+
+      # build the application image
+      - run: 
+          name: Build image
+          command: docker build -t signavio/atlantis:latest .
+
+      # deploy the image
+      - run: 
+          name: Push to docker hub
+          command: docker push signavio/atlantis:latest
