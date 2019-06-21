@@ -1,0 +1,2 @@
+# Define code owners to ensure review by experts before infrastructure changes can be applied
+./* @signavio/devops
